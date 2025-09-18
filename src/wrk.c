@@ -1,5 +1,5 @@
 // Copyright (C) 2012 - Will Glozer.  All rights reserved.
-
+#include <inttypes.h>
 #include "wrk.h"
 #include "script.h"
 #include "main.h"
@@ -100,9 +100,9 @@ int main(int argc, char **argv) {
         sock.write    = ssl_write;
         sock.readable = ssl_readable;
     }
-	
+
     cfg.host = host;
-	
+
     signal(SIGPIPE, SIG_IGN);
     signal(SIGINT,  SIG_IGN);
 
@@ -119,7 +119,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "unable to connect to %s:%s %s\n", host, service, msg);
         exit(1);
     }
-    
+
     uint64_t connections = cfg.connections / cfg.threads;
     double throughput    = (double)cfg.rate / cfg.threads;
     uint64_t stop_at     = time_us() + (cfg.duration * 1000000);

@@ -1,5 +1,12 @@
 // Copyright (C) 2013 - Will Glozer.  All rights reserved.
 
+#include <luajit-2.1/lua.h>
+#include <luajit-2.1/lauxlib.h>
+
+// #if LUA_VERSION_NUM >= 502
+#define luaL_reg luaL_Reg
+// #endif
+
 #include <stdlib.h>
 #include <string.h>
 #include "script.h"
